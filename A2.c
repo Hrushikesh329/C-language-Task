@@ -1,24 +1,26 @@
 #include<stdio.h>
-
-void Pattern(int iNo)
+int Display(int no)
 {
-	int iCnt=0;
-	//char CValue='A';
-	for(iCnt=iNo;iCnt>=1;iCnt--)
+	static int i=0,sum=0;;
+	
+	if(no!=0)
 	{
-		
-			//printf("%c",'A'+iCnt);
-		printf("%d# \t",iCnt);
-	}	
+		i=no%10;
+		sum=sum+i;
+		no=no/10;
+		Display(no);
+	}
+	return sum;
 }
+
 int main()
 {
-	int iValue = 0;
+	int value=0,iret=0;
 	
-	printf("Enter number of elements");
-	scanf("%d",&iValue);
+	printf("enter number");
+	scanf("%d",&value);
 	
-	Pattern(iValue);
-	
+	iret=Display(value);
+	printf("%d",iret);
 	return 0;
-}
+}	

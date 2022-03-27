@@ -1,24 +1,24 @@
 #include<stdio.h>
-
-void Pattern(int iNo)
+int str(char *st)
 {
-	int iCnt=0;
+	static int i;
 	
-	for(iCnt=1;iCnt<=iNo;iCnt++)
+	if(*st!='\0')
 	{
-		
-			
-		printf("%d* \t",iCnt);
-	}	
+		i++;
+		st++;
+		str(st);
+	}
+	return i;
 }
 int main()
 {
-	int iValue = 0;
+	int iret=0;
+	char ch[20];
 	
-	printf("Enter number of elements");
-	scanf("%d",&iValue);
+	printf("enter string");
+	scanf("%[^'\n']S",&ch);
 	
-	Pattern(iValue);
-	
-	return 0;
+	iret=str(ch);
+	printf("%d",iret);
 }

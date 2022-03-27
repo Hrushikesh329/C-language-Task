@@ -1,35 +1,25 @@
 #include<stdio.h>
-
-void Display(int iRow,int iCol)
+void Display(int no)
 {
+	static int i=1;
 	
-	
-	int i=0,j=0;
-	char ch='\0';
-	
-	for(i=1;i<=iRow;i++)
+	if(i<=no)
 	{
-		for(j=1,ch='A';j<=iCol;j++,ch++)
-		{
-			printf("%c",ch);
-			
-			
-		}
-		printf("\n");
+		printf("%d*",no);
+		no--;
+		Display(no);
 	}
+	
 }
 
 int main()
 {
-	int iValue=0;
-	int iValue1=0;
+	int value=0,iret=0;
 	
-	printf("enter number of rows");
-	scanf("%d",&iValue);
+	printf("enter number");
+	scanf("%d",&value);
 	
-	printf("enter number of colums");
-	scanf("%d",&iValue1);
+	Display(value);
 	
-	Display(iValue,iValue1);
 	return 0;
 }	
