@@ -1,37 +1,52 @@
 #include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<io.h>
+#include<fcntl.h>
 
-void DisplayPattern(int,int);
+
+
+
+int iCountCapitalChar(char Fname[],int iSize )
+{
+	int Fd=0,i=0,iCnt=0;
+	int Bret=0;
+	char Buffer[10];
 	
+	
+	Fd=open(Fname,O_RDONLY);
+	
+	if(Fd==-1)
+	{
+		printf("unable to open file");
+	}
+	
+read(Fd,Buffer,iSize);
+	
+	write(1,Buffer,iSize);
+	
+	close(Fd);
+}
 int main()
 {
-	int iValue1=0;
-	int iValue2=0;
+	char fname[30];
+	int A;
+	char iRect=0;
 	
-	printf("Enter number rows\n"); 
-	scanf("%d",&iValue1);
+	//printf("enter search charcter");
+	//scanf("%c",A);
 	
-	printf("Enter number columns\n"); 
-	scanf("%d",&iValue2);
+	printf("enter file name");
+	scanf("%s",fname);
 	
-	DisplayPattern(iValue1,iValue2);
+	printf("enter number charcter");
+	scanf("%d",&A);
+	
+	iRect=iCountCapitalChar(fname,A);
+	
+
+	
 	
 	return 0;
-}	
-
-
-void DisplayPattern(int row,int coloum)
-{
-	int iCnt1=0;
-	int iCnt2=0;
-	for(iCnt1=1;iCnt1<=row;iCnt1++)
-	{	
-		for(iCnt2=1;iCnt2<=coloum;iCnt2++) 
-		{  
-	        if(iCnt1<=coloum)
-			{		
-			printf("%d\t",iCnt1);
-			}		
-		}
-	printf("\n");
-	}
 }
+	

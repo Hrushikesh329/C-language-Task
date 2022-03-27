@@ -1,34 +1,51 @@
 #include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<io.h>
+#include<fcntl.h>
 
-void DisplayPattern(int,int);
-	
-int main()
+
+
+
+int iCountCapitalChar(char Fname[])
 {
-	int iValue1=0;
-	int iValue2=0;
+	int Fd=0,i=0,iCnt=0;
+	int Bret=0;
+	char Buffer[10];
 	
-	printf("Enter number rows\n"); 
-	scanf("%d",&iValue1);
 	
-	printf("Enter number columns\n"); 
-	scanf("%d",&iValue2);
+	Fd=open(Fname,O_RDWR);
 	
-	DisplayPattern(iValue1,iValue2);
-	
-	return 0;
-}	
-
-
-void DisplayPattern(int row,int coloum)
-{
-	int iCnt1=0;
-	int iCnt2=0;
-	for(iCnt1=1;iCnt1<=row;iCnt1++)
-	{	
-		for(iCnt2=1;iCnt2<=coloum;iCnt2++) 
-		{
-			printf("%d\t",iCnt2);
-		}
-	printf("\n");
+	if(Fd==-1)
+	{
+		printf("unable to open file");
 	}
+
+	while((Bret=read(Fd,Buffer,sizeof(Buffer)))!=0)
+	{
+		for(i=0;i<Bret;i++)
+		{	
+			if(Buffer[i]>='a'&&Buffer[i]<='z')
+			{
+				iCnt++;
+			}	
+		}
+	}
+	return iCnt;
 }
+int main()
+{									
+	char fname[30];
+							
+	int iRect=0;
+					
+	printf("enter file name");
+	scanf("%s",fname);
+								
+	iRect=iCountCapitalChar(fname);
+										
+	printf("Small character count is %d",iRect);
+									
+	return 0;
+}
+	

@@ -1,43 +1,48 @@
-// pattern programming
-
-// Accept number from user and display below pattern
-
-// input :-5
-
-// output:- * * * * *
-
 #include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<io.h>
+#include<fcntl.h>
 
-void DisplayPattern(int,int);
+int iCountCapitalChar(char Fname[])
+{
+	int Fd=0,i=0,iCnt=0;
+	int Bret=0;
+	char Buffer[10];
 	
+	
+	Fd=open(Fname,O_RDWR);
+	
+	if(Fd==-1)
+	{
+		printf("unable to open file");
+	}
+
+	while((Bret=read(Fd,Buffer,sizeof(Buffer)))!=0)
+	{
+		for(i=0;i<Bret;i++)
+		{	
+			if(Buffer[i]>='A'&&Buffer[i]<='Z')
+			{
+				iCnt++;
+			}	
+		}
+	}
+	return iCnt;
+}
 int main()
 {
-	int iValue1=0;
-	int iValue2=0;
+	char fname[30];
 	
-	printf("Enter number rows\n"); 
-	scanf("%d",&iValue1);
+	int iRect=0;
 	
-	printf("Enter number columns\n"); 
-	scanf("%d",&iValue2);
+	printf("enter file name");
+	scanf("%s",fname);
 	
-	DisplayPattern(iValue1,iValue2);
+	iRect=iCountCapitalChar(fname);
+	
+	printf("Capital character count is %d",iRect);
 	
 	return 0;
-}	
-
-
-void DisplayPattern(int row,int coloum)
-{
-	int iCnt1=0;
-	int iCnt2=0;
-	for(iCnt1=1;iCnt1<=row;iCnt1++)
-	{	
-		for(iCnt2=1;iCnt2<=coloum;iCnt2++) 
-		{
-			printf("*\t");
-		}
-	printf("\n");
-	}
 }
-
+	
