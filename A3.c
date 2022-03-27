@@ -1,24 +1,45 @@
 #include<stdio.h>
-int str(char *st)
+
+int countdiff(char *str)
 {
-	static int i;
-	
-	if(*st!='\0')
+	int ismall=0;
+	int icap=0;
+
+	if(str==NULL)
 	{
-		i++;
-		st++;
-		str(st);
+		return 0;
 	}
-	return i;
+	while(*str!='\0')
+	{
+		if(*str>='a'&&*str<='z')
+		{
+			ismall++;
+			
+		}
+		if(*str>='A'&&*str<='Z')
+		{
+			icap++;
+			
+		}
+		
+		*str++;
+	}
+	return ismall-icap;
+	
+	
 }
+
 int main()
 {
-	int iret=0;
-	char ch[20];
-	
-	printf("enter string");
-	scanf("%[^'\n']S",&ch);
-	
-	iret=str(ch);
-	printf("%d",iret);
-}
+		char Arr[20];
+		int iRet=0;
+		
+		printf("enter character");
+		scanf("%[^'\n']s",Arr);
+		
+		iRet=countdiff(Arr);
+		
+		printf("%d",iRet);
+		
+		return 0;
+}		

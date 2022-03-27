@@ -1,44 +1,39 @@
+
 #include<stdio.h>
 
-void DisplayPattern(int,int);
-	
-int main()
+
+
+void Display(char *str)
 {
-	int iValue1=0;
-	int iValue2=0;
+	char a='\0';
 	
-	printf("Enter number rows\n"); 
-	scanf("%d",&iValue1);
 	
-	printf("Enter number columns\n"); 
-	scanf("%d",&iValue2);
+	while(*str!='\0')
+	{
+		//if(*str>='A' && *str<='Z'||*str==' '||*str>='a' || *str<='z')
+		//{ 
+			if(*str>='0' && *str<='9')
+			{	
+				printf("%c",*str);
+				
+			}
+			*str++;
+			
+		//}
+		//printf("%c%s",a,*str);
+			//*str++;
+	}	
+}
+
+int main ()
+{
+		char cvalue[50];
 	
-	DisplayPattern(iValue1,iValue2);
+		
+		printf("enter character");
+		scanf("%[^'\n']s",&cvalue);
+		
+		Display(cvalue);
 	
 	return 0;
 }	
-
-
-void DisplayPattern(int row,int coloum)
-{
-	int iCnt1=0;
-	int iCnt2=0;
-	for(iCnt1=1;iCnt1<=row;iCnt1++)
-	{	
-		for(iCnt2=1;iCnt2<=coloum;iCnt2++) 
-		{  
-	        if((iCnt2%2)!=0)
-			{	
-			printf("*\t",iCnt2);
-			}
-			else
-			{
-				printf("#\t",iCnt2);
-			}		
-		}
-		
-		
-		
-	printf("\n");
-	}
-}

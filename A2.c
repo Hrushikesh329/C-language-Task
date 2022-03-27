@@ -1,26 +1,40 @@
 #include<stdio.h>
-int Display(int no)
+
+int countdiff(char *str)
 {
-	static int i=0,sum=0;;
-	
-	if(no!=0)
+	int ismall=0;
+	int icap=0;
+
+	if(str==NULL)
 	{
-		i=no%10;
-		sum=sum+i;
-		no=no/10;
-		Display(no);
+		return 0;
 	}
-	return sum;
+
+	while(*str!='\0')
+	{
+		if(*str>='a'&&*str<='z')
+		{
+			ismall++;
+			
+		}
+		
+		*str++;
+	}
+	return ismall;
+	
 }
 
 int main()
 {
-	int value=0,iret=0;
-	
-	printf("enter number");
-	scanf("%d",&value);
-	
-	iret=Display(value);
-	printf("%d",iret);
-	return 0;
-}	
+		char Arr[20];
+		int iRet=0;
+		
+		printf("enter character");
+		scanf("%[^'\n']s",Arr);
+		
+		iRet=countdiff(Arr);
+		
+		printf("%d",iRet);
+		
+		return 0;
+}		

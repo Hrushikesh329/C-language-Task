@@ -1,25 +1,38 @@
 #include<stdio.h>
-void Display(int no)
+
+int countcapital(char *str)
 {
-	static int i=1;
-	
-	if(i<=no)
+	int icnt=0;
+
+	if(str==NULL)
 	{
-		printf("%d*",no);
-		no--;
-		Display(no);
+		return 0;
 	}
+
+	while(*str!='\0')
+	{
+		if(*str>='A'&&*str<='Z')
+		{
+			icnt++;
+			
+		}
+		*str++;
+	}
+	return icnt;
 	
 }
 
 int main()
 {
-	int value=0,iret=0;
-	
-	printf("enter number");
-	scanf("%d",&value);
-	
-	Display(value);
-	
-	return 0;
-}	
+		char Arr[20];
+		int iRet=0;
+		
+		printf("enter character");
+		scanf("%[^'\n']s",Arr);
+		
+		iRet=countcapital(Arr);
+		
+		printf("%d",iRet);
+		
+		return 0;
+}		

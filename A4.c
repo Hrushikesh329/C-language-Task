@@ -1,24 +1,48 @@
 #include<stdio.h>
-int fact(int no)
+#define TRUE 1
+#define FALSE 0
+typedef unsigned int BOOL;
+
+BOOL countdiff(char *str)
 {
-	static int i=1;
-	if(no!=0)
+	int ismall=0;
+	int icap=0;
+
+	if(str==NULL)
 	{
-		i=i*no;
-		no--;
-		fact(no);
+		return 0;
 	}
-	return i;
+
+	while(*str!='\0')
+	{
+		if(*str=='a'|| *str=='e'||*str=='i'|| *str=='o'||*str=='u'|| *str=='A'||*str=='E'|| *str=='I'||*str=='O'|| *str=='U')
+		{
+			return TRUE;
+			
+		}
+		
+		*str++;
+	}
+	return FALSE;
+	
 }
+
 int main()
 {
-	int ivalue=0,iret=0;
-	
-	printf("enter number");
-	scanf("%d",&ivalue);
-	
-	iret=fact(ivalue);
-	printf("%d",iret);
-	
-	
-}	
+		char Arr[20];
+		BOOL bRet=FALSE;
+		
+		printf("enter character");
+		scanf("%[^'\n']s",Arr);
+		
+		bRet=countdiff(Arr);
+		if(bRet==TRUE)
+		{
+		printf("it contains vowel");
+		}
+		else
+		{
+			printf("it not contain vowel");
+		}	
+		return 0;
+}		

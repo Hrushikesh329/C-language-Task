@@ -1,26 +1,46 @@
 #include<stdio.h>
-int Display(int no)
+
+void Reverse(char *str)
 {
-	static int i=0,sum=1;;
-	
-	if(no!=0)
+	int ismall=0;
+	int icap=0;
+	int bas=0;
+
+	if(str==NULL)
 	{
-		i=no%10;
-		sum=sum*i;
-		no=no/10;
-		Display(no);
+		bas;
 	}
-	return sum;
+	while(*str!='\0')
+	{
+		ismall++;
+		*str++;
+	//printf("%d",ismall);
+	}	
+	*str--;
+	//printf("%d",ismall);
+	
+	for(icap=ismall;icap>=0;icap--)
+	{
+		//printf("%d",icap);
+		printf("%c",*str);
+		str--;
+	}
+	//return ismall-icap;
+	
+	
 }
 
 int main()
 {
-	int value=0,iret=0;
-	
-	printf("enter number");
-	scanf("%d",&value);
-	
-	iret=Display(value);
-	printf("%d",iret);
-	return 0;
-}	
+		char Arr[20];
+		
+		
+		printf("enter character");
+		scanf("%[^'\n']s",Arr);
+		
+		Reverse(Arr);
+		
+		
+		
+		return 0;
+}		
