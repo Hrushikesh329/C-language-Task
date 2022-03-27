@@ -3,13 +3,16 @@
 void Pattern(int iNo)
 {
 	int iCnt=0;
-	
+	int iCnt2=0;
 	for(iCnt=1;iCnt<=iNo;iCnt++)
 	{
-		
+		//if(iCnt<=iNo)
+		//{	
 			
-		printf("%d* \t",iCnt);
-	}	
+			//iCnt2=iCnt*2;
+			printf("%d \t",iCnt*2);
+		//}
+	}
 }
 int main()
 {

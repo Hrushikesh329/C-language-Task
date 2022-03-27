@@ -1,46 +1,24 @@
 #include<stdio.h>
-#include<stdbool.h>
-//#define TRUE 1
-//#define FALSE 0
 
-bool ChkPd(int iNo)
+void Pattern(int iNo)
 {
-	int iDigit=0;
-	int iRev=0;
-	int iTemo=iNo;
-	while(iNo!=0)
+	int iCnt=0;
+	
+	for(iCnt=1;iCnt<=iNo;iCnt++)
 	{
+		
 			
-		iDigit=iNo%10;
-		iRev=((iRev*10)+iDigit);	
-	    iNo=iNo/10;
-	}
-	if(iRev==iTemo)
-	{
-		return true;
-	}
-	else
-	{
-			return false;
-	}		
+		printf("#%d* \t",iCnt);
+	}	
 }
-
 int main()
 {
-		int iValue=0;
-	    bool iRet=false;
-		
-		printf("Enter number");
-		scanf("%d",&iValue);
-		
-		iRet=ChkPd(iValue);
-		if(iRet==true)
-		{
-			printf("it is pd: ");
-		}
-		else
-		{
-			printf("it is not pd");
-		}	
-		return 0;
-}		
+	int iValue = 0;
+	
+	printf("Enter number of elements");
+	scanf("%d",&iValue);
+	
+	Pattern(iValue);
+	
+	return 0;
+}
